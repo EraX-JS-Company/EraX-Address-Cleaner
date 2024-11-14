@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+  erax_address_cleaner_service_0:
+    # container_name: erax_address_cleaner_service_0_container
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    image: htdung167/erax_address_cleaner:v0
+    networks:
+      - erax_network
+    restart: unless-stopped
+    env_file:
+      - ./.env
+
+  erax_address_cleaner_service_1:
+    # container_name: erax_address_cleaner_service_1_container
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    image: htdung167/erax_address_cleaner:v0
+    networks:
+      - erax_network
+    restart: unless-stopped
+    env_file:
+      - ./.env
+    
+  nginx:
+    # container_name: erax_address_cleaner_nginx_container
+    image: nginx:stable-alpine-perl
+    volumes:
+      - /mnt/data03/mad/hoangtiendung/EraX-Address-Cleaner/config/nginx.conf:/etc/nginx/nginx.conf
+      - /mnt/data03/mad/hoangtiendung/EraX-Address-Cleaner/media/logo.png:/etc/nginx/html/static/media/logo.png
+      - /mnt/data03/mad/hoangtiendung/EraX-Address-Cleaner/openssl/cert.pem:/etc/nginx/openssl/cert.pem
+      - /mnt/data03/mad/hoangtiendung/EraX-Address-Cleaner/openssl/key.pem:/etc/nginx/openssl/key.pem
+    ports:
+      - 4001:80
+      - 4002:443
+    depends_on:
+      - erax_address_cleaner_service_0
+    networks:
+      - erax_network
+    restart: unless-stopped
+      
+networks:
+  erax_network:
+    driver: bridge

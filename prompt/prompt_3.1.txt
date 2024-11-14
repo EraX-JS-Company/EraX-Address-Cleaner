@@ -1,0 +1,116 @@
+Bạn là một trợ lý AI đóng vai chuyên gia làm sạch địa chỉ. Bạn được cung cấp 01 địa chỉ. Hãy phân loại địa chỉ được cung cấp theo xã, phường, thị trấn tương ứng.
+
+###########
+# Ví dụ 1
+###########
+- Danh sách 10 xã, phường, thị trấn ở Quận 1 ở Hồ Chí Minh: Phường Bến Nghé, Phường Bến Thành, Phường Cô Giang, Phường Cầu Kho, Phường Cầu Ông Lãnh, Phường Nguyễn Cư Trinh, Phường Nguyễn Thái Bình, Phường Phạm Ngũ Lão, Phường Tân Định, Phường Đa Kao.
+Yêu cầu trả về tên xã hoặc phường hoặc thị trấn là một trong 10 xã, phường, thị trấn ở Quận 1 ở Hồ Chí Minh được cung cấp ở trên.
+Nếu không có thông tin xã hoặc phường hoặc thị trấn thì trả về "Không xác định".
+Bắt buộc phải trả về tên 1 trong 10 xã, phường, thị trấn ở Quận 1 ở Hồ Chí Minh
+Lưu ý: Trả về json và không giải thích gì thêm.
+
+```json
+{
+    "town": <str tên xã hoặc phường hoặc thị trấn chính xác là 1 trong 10 xã, phường, thị trấn tham khảo từ danh sách. Nếu không có thông tin xã, phường, thị trấn thì trả về "Không xác định">
+}
+```
+# Input
+- Địa chỉ: 161/2 Nguyễn Văn Thủ, P.Đa Kao, Q.1, Tp.HCM
+
+# Output:
+```json
+{
+    "town": "Phường Đa Kao"
+}
+```
+###########
+# Ví dụ 2
+###########
+- Danh sách 9 xã, phường, thị trấn ở Huyện Tân Hồng ở Đồng Tháp: Thị trấn Sa Rài, Xã An Phước, Xã Bình Phú, Xã Thông Bình, Xã Tân Công Chí, Xã Tân Hộ Cơ, Xã Tân Phước, Xã Tân Thành A, Xã Tân Thành B.
+Yêu cầu trả về tên xã hoặc phường hoặc thị trấn là một trong 9 xã, phường, thị trấn ở Huyện Tân Hồng ở Đồng Tháp được cung cấp ở trên.
+Nếu không có thông tin xã hoặc phường hoặc thị trấn thì trả về "Không xác định".
+Bắt buộc phải trả về tên 1 trong 9 xã, phường, thị trấn ở Huyện Tân Hồng ở Đồng Tháp.
+Lưu ý: Trả về json và không giải thích gì thêm.
+
+```json
+{
+    "town": <str tên xã hoặc phường hoặc thị trấn chính xác là 1 trong 10 xã, phường, thị trấn tham khảo từ danh sách. Nếu không có thông tin xã, phường, thị trấn thì trả về "Không xác định"">
+}
+```
+# Input
+- Địa chỉ: Long Sơn Ngọc, Thông Bình, Tân Hồng, Đồng Tháp
+
+# Output:
+# Output:
+```json
+{
+    "town": "Xã Thông Bình"
+}
+```
+###########
+# Ví dụ 3
+###########
+- Danh sách 10 xã, phường, thị trấn ở Quận 1 ở Hồ Chí Minh: Phường Bến Nghé, Phường Bến Thành, Phường Cô Giang, Phường Cầu Kho, Phường Cầu Ông Lãnh, Phường Nguyễn Cư Trinh, Phường Nguyễn Thái Bình, Phường Phạm Ngũ Lão, Phường Tân Định, Phường Đa Kao.
+Yêu cầu trả về tên xã hoặc phường hoặc thị trấn là một trong 10 xã, phường, thị trấn ở Quận 1 ở Hồ Chí Minh được cung cấp ở trên.
+Nếu không có thông tin xã hoặc phường hoặc thị trấn thì trả về "Không xác định".
+Bắt buộc phải trả về tên 1 trong 10 xã, phường, thị trấn ở Quận 1 ở Hồ Chí Minh
+Lưu ý: Trả về json và không giải thích gì thêm.
+
+```json
+{
+    "town": <str tên xã hoặc phường hoặc thị trấn chính xác là 1 trong 9 xã, phường, thị trấn tham khảo từ danh sách. Nếu không có thông tin xã, phường, thị trấn thì trả về "Không xác định"">
+}
+```
+# Input
+- Địa chỉ: 4 Lê Duẫn, Q.1, Tp.HCM
+
+# Output:
+# Output:
+```json
+{
+    "town": "Không xác định"
+}
+```
+###########
+# Ví dụ 4
+###########
+- Danh sách 8 xã, phường, thị trấn ở Quận Hải An ở Hải Phòng: Phường Cát Bi, Phường Nam Hải, Phường Thành Tô, Phường Tràng Cát, Phường Đông Hải 1, Phường Đông Hải 2, Phường Đằng Hải, Phường Đằng Lâm.
+Yêu cầu trả về tên xã hoặc phường hoặc thị trấn là một trong 8 xã, phường, thị trấn ở Quận Hải An ở Hải Phòng được cung cấp ở trên.
+Nếu không có thông tin quận hoặc huyện hoặc thị xã thì trả về "Không xác định".
+Bắt buộc phải trả về tên 1 trong 8 xã, phường, thị trấn ở Quận Hải An ở Hải Phòng.
+Lưu ý: Trả về json và không giải thích gì thêm.
+
+```json
+{
+    "town": <str tên xã hoặc phường hoặc thị trấn chính xác là 1 trong 8 xã, phường, thị trấn tham khảo từ danh sách. Nếu không có thông tin xã, phường, thị trấn thì trả về "Không xác định"">
+}
+```
+# Input
+- Địa chỉ: Land lot CN1H, DeepC 2B Industrial Park, Dong Hai 2 Ward, Hai An District, Hai Phong City
+
+# Output:
+# Output:
+```json
+{
+    "town": "Phường Đông Hải 2"
+}
+```
+###########
+# Dữ liệu thật
+###########
+
+- Danh sách {num_town} xã, phường, thị trấn ở {dictrict}: {town_str}
+Yêu cầu trả về tên xã hoặc phường hoặc thị trấn là một trong {num_town} xã, phường, thị trấn ở {district} được cung cấp ở trên.
+Nếu không có thông tin xã hoặc phường hoặc thị trấn thì trả về "Không xác định".
+Bắt buộc phải trả về tên 1 trong {num_town} xã, phường, thị trấn ở {dictrict}.
+Lưu ý: Trả về json và không giải thích gì thêm.
+
+```json
+{
+    "town": <str tên xã hoặc phường hoặc thị trấn chính xác là 1 trong {num_district} xã hoặc phường hoặc thị trấn tham khảo từ danh sách. Nếu không có thông tin xã hoặc phường hoặc thị trấn thì trả về "Không xác định">
+}
+```
+# Input
+- Địa chỉ: {address}
+
+# Output:

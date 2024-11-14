@@ -1,0 +1,835 @@
+Bạn là một trợ lý AI đóng vai chuyên gia làm sạch địa chỉ. Bạn được cung cấp 01 địa chỉ. Hãy phân loại địa chỉ được cung cấp theo xã, phường, thị trấn và quận, huyện, thị xã tương ứng.
+
+###########
+# Ví dụ 1
+###########
+- Danh sách 322 xã, phường, thị trấn theo quận, huyện, thị xã ở Hồ Chí Minh: 
+Quận 1, Phường Bến Nghé
+- Quận 1, Phường Bến Thành
+- Quận 1, Phường Cô Giang
+- Quận 1, Phường Cầu Kho
+- Quận 1, Phường Cầu Ông Lãnh
+- Quận 1, Phường Nguyễn Cư Trinh
+- Quận 1, Phường Nguyễn Thái Bình
+- Quận 1, Phường Phạm Ngũ Lão
+- Quận 1, Phường Tân Định
+- Quận 1, Phường Đa Kao
+- Quận 2, Phường An Khánh
+- Quận 2, Phường An Lợi Đông
+- Quận 2, Phường An Phú
+- Quận 2, Phường Bình An
+- Quận 2, Phường Bình Khánh
+- Quận 2, Phường Bình Trưng Tây
+- Quận 2, Phường Bình Trưng Đông
+- Quận 2, Phường Cát Lái
+- Quận 2, Phường Thạnh Mỹ Lợi
+- Quận 2, Phường Thảo Điền
+- Quận 2, Phường Thủ Thiêm
+- Quận 3, Phường 01
+- Quận 3, Phường 02
+- Quận 3, Phường 03
+- Quận 3, Phường 04
+- Quận 3, Phường 05
+- Quận 3, Phường 06
+- Quận 3, Phường 07
+- Quận 3, Phường 08
+- Quận 3, Phường 09
+- Quận 3, Phường 10
+- Quận 3, Phường 11
+- Quận 3, Phường 12
+- Quận 3, Phường 13
+- Quận 3, Phường 14
+- Quận 4, Phường 01
+- Quận 4, Phường 02
+- Quận 4, Phường 03
+- Quận 4, Phường 04
+- Quận 4, Phường 05
+- Quận 4, Phường 06
+- Quận 4, Phường 08
+- Quận 4, Phường 09
+- Quận 4, Phường 10
+- Quận 4, Phường 12
+- Quận 4, Phường 13
+- Quận 4, Phường 14
+- Quận 4, Phường 15
+- Quận 4, Phường 16
+- Quận 4, Phường 18
+- Quận 5, Phường 01
+- Quận 5, Phường 02
+- Quận 5, Phường 03
+- Quận 5, Phường 04
+- Quận 5, Phường 05
+- Quận 5, Phường 06
+- Quận 5, Phường 07
+- Quận 5, Phường 08
+- Quận 5, Phường 09
+- Quận 5, Phường 10
+- Quận 5, Phường 11
+- Quận 5, Phường 12
+- Quận 5, Phường 13
+- Quận 5, Phường 14
+- Quận 5, Phường 15
+- Quận 6, Phường 01
+- Quận 6, Phường 02
+- Quận 6, Phường 03
+- Quận 6, Phường 04
+- Quận 6, Phường 05
+- Quận 6, Phường 06
+- Quận 6, Phường 07
+- Quận 6, Phường 08
+- Quận 6, Phường 09
+- Quận 6, Phường 10
+- Quận 6, Phường 11
+- Quận 6, Phường 12
+- Quận 6, Phường 13
+- Quận 6, Phường 14
+- Quận 7, Phường Bình Thuận
+- Quận 7, Phường Phú Mỹ
+- Quận 7, Phường Phú Thuận
+- Quận 7, Phường Tân Hưng
+- Quận 7, Phường Tân Kiểng
+- Quận 7, Phường Tân Phong
+- Quận 7, Phường Tân Phú
+- Quận 7, Phường Tân Quy
+- Quận 7, Phường Tân Thuận Tây
+- Quận 7, Phường Tân Thuận Đông
+- Quận 8, Phường 01
+- Quận 8, Phường 02
+- Quận 8, Phường 03
+- Quận 8, Phường 04
+- Quận 8, Phường 05
+- Quận 8, Phường 06
+- Quận 8, Phường 07
+- Quận 8, Phường 08
+- Quận 8, Phường 09
+- Quận 8, Phường 10
+- Quận 8, Phường 11
+- Quận 8, Phường 12
+- Quận 8, Phường 13
+- Quận 8, Phường 14
+- Quận 8, Phường 15
+- Quận 8, Phường 16
+- Quận 9, Phường Hiệp Phú
+- Quận 9, Phường Long Bình
+- Quận 9, Phường Long Phước
+- Quận 9, Phường Long Thạnh Mỹ
+- Quận 9, Phường Long Trường
+- Quận 9, Phường Phú Hữu
+- Quận 9, Phường Phước Bình
+- Quận 9, Phường Phước Long A
+- Quận 9, Phường Phước Long B
+- Quận 9, Phường Trường Thạnh
+- Quận 9, Phường Tân Phú
+- Quận 9, Phường Tăng Nhơn Phú A
+- Quận 9, Phường Tăng Nhơn Phú B
+- Quận 10, Phường 01
+- Quận 10, Phường 02
+- Quận 10, Phường 03
+- Quận 10, Phường 04
+- Quận 10, Phường 05
+- Quận 10, Phường 06
+- Quận 10, Phường 07
+- Quận 10, Phường 08
+- Quận 10, Phường 09
+- Quận 10, Phường 10
+- Quận 10, Phường 11
+- Quận 10, Phường 12
+- Quận 10, Phường 13
+- Quận 10, Phường 14
+- Quận 10, Phường 15
+- Quận 11, Phường 01
+- Quận 11, Phường 02
+- Quận 11, Phường 03
+- Quận 11, Phường 04
+- Quận 11, Phường 05
+- Quận 11, Phường 06
+- Quận 11, Phường 07
+- Quận 11, Phường 08
+- Quận 11, Phường 09
+- Quận 11, Phường 10
+- Quận 11, Phường 11
+- Quận 11, Phường 12
+- Quận 11, Phường 13
+- Quận 11, Phường 14
+- Quận 11, Phường 15
+- Quận 11, Phường 16
+- Quận 12, Phường An Phú Đông
+- Quận 12, Phường Hiệp Thành
+- Quận 12, Phường Thạnh Lộc
+- Quận 12, Phường Thạnh Xuân
+- Quận 12, Phường Thới An
+- Quận 12, Phường Trung Mỹ Tây
+- Quận 12, Phường Tân Chánh Hiệp
+- Quận 12, Phường Tân Hưng Thuận
+- Quận 12, Phường Tân Thới Hiệp
+- Quận 12, Phường Tân Thới Nhất
+- Quận 12, Phường Đông Hưng Thuận
+- Quận Bình Thạnh, Phường 01
+- Quận Bình Thạnh, Phường 02
+- Quận Bình Thạnh, Phường 03
+- Quận Bình Thạnh, Phường 05
+- Quận Bình Thạnh, Phường 06
+- Quận Bình Thạnh, Phường 07
+- Quận Bình Thạnh, Phường 11
+- Quận Bình Thạnh, Phường 12
+- Quận Bình Thạnh, Phường 13
+- Quận Bình Thạnh, Phường 14
+- Quận Bình Thạnh, Phường 15
+- Quận Bình Thạnh, Phường 17
+- Quận Bình Thạnh, Phường 19
+- Quận Bình Thạnh, Phường 21
+- Quận Bình Thạnh, Phường 22
+- Quận Bình Thạnh, Phường 24
+- Quận Bình Thạnh, Phường 25
+- Quận Bình Thạnh, Phường 26
+- Quận Bình Thạnh, Phường 27
+- Quận Bình Thạnh, Phường 28
+- Quận Bình Tân, Phường  An Lạc
+- Quận Bình Tân, Phường An Lạc A
+- Quận Bình Tân, Phường Bình Hưng Hoà A
+- Quận Bình Tân, Phường Bình Hưng Hoà B
+- Quận Bình Tân, Phường Bình Hưng Hòa
+- Quận Bình Tân, Phường Bình Trị Đông
+- Quận Bình Tân, Phường Bình Trị Đông A
+- Quận Bình Tân, Phường Bình Trị Đông B
+- Quận Bình Tân, Phường Tân Tạo
+- Quận Bình Tân, Phường Tân Tạo A
+- Quận Gò Vấp, Phường 01
+- Quận Gò Vấp, Phường 03
+- Quận Gò Vấp, Phường 04
+- Quận Gò Vấp, Phường 05
+- Quận Gò Vấp, Phường 07
+- Quận Gò Vấp, Phường 10
+- Quận Gò Vấp, Phường 11
+- Quận Gò Vấp, Phường 12
+- Quận Gò Vấp, Phường 13
+- Quận Gò Vấp, Phường 14
+- Quận Gò Vấp, Phường 15
+- Quận Gò Vấp, Phường 16
+- Quận Gò Vấp, Phường 17
+- Quận Gò Vấp, Phường 6
+- Quận Gò Vấp, Phường 8
+- Quận Gò Vấp, Phường 9
+- Quận Phú Nhuận, Phường 01
+- Quận Phú Nhuận, Phường 02
+- Quận Phú Nhuận, Phường 03
+- Quận Phú Nhuận, Phường 04
+- Quận Phú Nhuận, Phường 05
+- Quận Phú Nhuận, Phường 07
+- Quận Phú Nhuận, Phường 08
+- Quận Phú Nhuận, Phường 09
+- Quận Phú Nhuận, Phường 10
+- Quận Phú Nhuận, Phường 11
+- Quận Phú Nhuận, Phường 12
+- Quận Phú Nhuận, Phường 13
+- Quận Phú Nhuận, Phường 14
+- Quận Phú Nhuận, Phường 15
+- Quận Phú Nhuận, Phường 17
+- Quận Thủ Đức, Phường Bình Chiểu
+- Quận Thủ Đức, Phường Bình Thọ
+- Quận Thủ Đức, Phường Hiệp Bình Chánh
+- Quận Thủ Đức, Phường Hiệp Bình Phước
+- Quận Thủ Đức, Phường Linh Chiểu
+- Quận Thủ Đức, Phường Linh Trung
+- Quận Thủ Đức, Phường Linh Tây
+- Quận Thủ Đức, Phường Linh Xuân
+- Quận Thủ Đức, Phường Linh Đông
+- Quận Thủ Đức, Phường Tam Bình
+- Quận Thủ Đức, Phường Tam Phú
+- Quận Thủ Đức, Phường Trường Thọ
+- Quận Tân Bình, Phường 01
+- Quận Tân Bình, Phường 02
+- Quận Tân Bình, Phường 03
+- Quận Tân Bình, Phường 04
+- Quận Tân Bình, Phường 05
+- Quận Tân Bình, Phường 06
+- Quận Tân Bình, Phường 07
+- Quận Tân Bình, Phường 08
+- Quận Tân Bình, Phường 09
+- Quận Tân Bình, Phường 10
+- Quận Tân Bình, Phường 11
+- Quận Tân Bình, Phường 12
+- Quận Tân Bình, Phường 13
+- Quận Tân Bình, Phường 14
+- Quận Tân Bình, Phường 15
+- Quận Tân Phú, Phường Hiệp Tân
+- Quận Tân Phú, Phường Hòa Thạnh
+- Quận Tân Phú, Phường Phú Thạnh
+- Quận Tân Phú, Phường Phú Thọ Hòa
+- Quận Tân Phú, Phường Phú Trung
+- Quận Tân Phú, Phường Sơn Kỳ
+- Quận Tân Phú, Phường Tân Quý
+- Quận Tân Phú, Phường Tân Sơn Nhì
+- Quận Tân Phú, Phường Tân Thành
+- Quận Tân Phú, Phường Tân Thới Hòa
+- Quận Tân Phú, Phường Tây Thạnh
+- Huyện Bình Chánh, Thị trấn Tân Túc
+- Huyện Bình Chánh, Xã An Phú Tây
+- Huyện Bình Chánh, Xã Bình Chánh
+- Huyện Bình Chánh, Xã Bình Hưng
+- Huyện Bình Chánh, Xã Bình Lợi
+- Huyện Bình Chánh, Xã Hưng Long
+- Huyện Bình Chánh, Xã Lê Minh Xuân
+- Huyện Bình Chánh, Xã Phong Phú
+- Huyện Bình Chánh, Xã Phạm Văn Hai
+- Huyện Bình Chánh, Xã Quy Đức
+- Huyện Bình Chánh, Xã Tân Kiên
+- Huyện Bình Chánh, Xã Tân Nhựt
+- Huyện Bình Chánh, Xã Tân Quý Tây
+- Huyện Bình Chánh, Xã Vĩnh Lộc A
+- Huyện Bình Chánh, Xã Vĩnh Lộc B
+- Huyện Bình Chánh, Xã Đa Phước
+- Huyện Cần Giờ, Thị trấn Cần Thạnh
+- Huyện Cần Giờ, Xã An Thới Đông
+- Huyện Cần Giờ, Xã Bình Khánh
+- Huyện Cần Giờ, Xã Long Hòa
+- Huyện Cần Giờ, Xã Lý Nhơn
+- Huyện Cần Giờ, Xã Tam Thôn Hiệp
+- Huyện Cần Giờ, Xã Thạnh An
+- Huyện Củ Chi, Thị trấn Củ Chi
+- Huyện Củ Chi, Xã An Nhơn Tây
+- Huyện Củ Chi, Xã An Phú
+- Huyện Củ Chi, Xã Bình Mỹ
+- Huyện Củ Chi, Xã Hòa Phú
+- Huyện Củ Chi, Xã Nhuận Đức
+- Huyện Củ Chi, Xã Phú Hòa Đông
+- Huyện Củ Chi, Xã Phú Mỹ Hưng
+- Huyện Củ Chi, Xã Phước Hiệp
+- Huyện Củ Chi, Xã Phước Thạnh
+- Huyện Củ Chi, Xã Phước Vĩnh An
+- Huyện Củ Chi, Xã Phạm Văn Cội
+- Huyện Củ Chi, Xã Thái Mỹ
+- Huyện Củ Chi, Xã Trung An
+- Huyện Củ Chi, Xã Trung Lập Hạ
+- Huyện Củ Chi, Xã Trung Lập Thượng
+- Huyện Củ Chi, Xã Tân An Hội
+- Huyện Củ Chi, Xã Tân Phú Trung
+- Huyện Củ Chi, Xã Tân Thông Hội
+- Huyện Củ Chi, Xã Tân Thạnh Tây
+- Huyện Củ Chi, Xã Tân Thạnh Đông
+- Huyện Hóc Môn, Thị trấn Hóc Môn
+- Huyện Hóc Môn, Xã Bà Điểm
+- Huyện Hóc Môn, Xã Nhị Bình
+- Huyện Hóc Môn, Xã Thới Tam Thôn
+- Huyện Hóc Môn, Xã Trung Chánh
+- Huyện Hóc Môn, Xã Tân Hiệp
+- Huyện Hóc Môn, Xã Tân Thới Nhì
+- Huyện Hóc Môn, Xã Tân Xuân
+- Huyện Hóc Môn, Xã Xuân Thới Sơn
+- Huyện Hóc Môn, Xã Xuân Thới Thượng
+- Huyện Hóc Môn, Xã Xuân Thới Đông
+- Huyện Hóc Môn, Xã Đông Thạnh
+- Huyện Nhà Bè, Thị trấn Nhà Bè
+- Huyện Nhà Bè, Xã Hiệp Phước
+- Huyện Nhà Bè, Xã Long Thới
+- Huyện Nhà Bè, Xã Nhơn Đức
+- Huyện Nhà Bè, Xã Phú Xuân
+- Huyện Nhà Bè, Xã Phước Kiển
+- Huyện Nhà Bè, Xã Phước Lộc
+
+Yêu cầu trả về tên xã hoặc phường hoặc thị trấn và tên quận hoặc huyện hoặc thị xã là xã, phường, thị trấn theo quận, huyện, thị xã ở Hồ Chí Minh được cung cấp ở trên.
+Nếu không có thông tin xã hoặc phường hoặc thị trấn và tên quận hoặc huyện hoặc thị xã thì trả về "Không xác định".
+Bắt buộc phải trả về tên xã, phường, thị trấn và quận, huyện, thị xã ở Hồ Chí Minh.
+Lưu ý: Trả về json và không giải thích gì thêm.
+
+```json
+{
+    "district": <str tên quận hoặc huyện hoặc thị xã chính xác là xã hoặc phường hoặc thị trấn và quận hoặc huyện hoặc thị xã tham khảo từ danh sách. Nếu không có thông tin xã hoặc phường hoặc thị trấn và quận hoặc huyện hoặc thị xã thì trả về "Không xác định">,
+    "town": <str tên xã hoặc phường hoặc thị trấn tương ứng với quận, huyện, thị xã chính xác là xã hoặc phường hoặc thị trấn và quận hoặc huyện hoặc thị xã tham khảo từ danh sách. Nếu không có thông tin xã hoặc phường hoặc thị trấn và quận hoặc huyện hoặc thị xã thì trả về "Không xác định">
+}
+```
+# Input
+- Địa chỉ: Số 6 Đường số 6, Khu Đô Thị Mới An Phú - An Khánh, P. An Phú, Tp. HCM
+
+# Output:
+```json
+{
+    "district": "Quận 2",
+    "town": "Phường An Phú"
+}
+```
+###########
+# Ví dụ 2
+###########
+- Danh sách 230 xã, phường, thị trấn theo quận, huyện, thị xã ở Bắc Giang: 
+Huyện Hiệp Hòa, Thị trấn Thắng
+- Huyện Hiệp Hòa, Xã Bắc Lý
+- Huyện Hiệp Hòa, Xã Châu Minh
+- Huyện Hiệp Hòa, Xã Danh Thắng
+- Huyện Hiệp Hòa, Xã Hoàng An
+- Huyện Hiệp Hòa, Xã Hoàng Lương
+- Huyện Hiệp Hòa, Xã Hoàng Thanh
+- Huyện Hiệp Hòa, Xã Hoàng Vân
+- Huyện Hiệp Hòa, Xã Hòa Sơn
+- Huyện Hiệp Hòa, Xã Hùng Sơn
+- Huyện Hiệp Hòa, Xã Hương Lâm
+- Huyện Hiệp Hòa, Xã Hợp Thịnh
+- Huyện Hiệp Hòa, Xã Lương Phong
+- Huyện Hiệp Hòa, Xã Mai Trung
+- Huyện Hiệp Hòa, Xã Mai Đình
+- Huyện Hiệp Hòa, Xã Ngọc Sơn
+- Huyện Hiệp Hòa, Xã Quang Minh
+- Huyện Hiệp Hòa, Xã Thanh Vân
+- Huyện Hiệp Hòa, Xã Thái Sơn
+- Huyện Hiệp Hòa, Xã Thường Thắng
+- Huyện Hiệp Hòa, Xã Xuân Cẩm
+- Huyện Hiệp Hòa, Xã Đoan Bái
+- Huyện Hiệp Hòa, Xã Đông Lỗ
+- Huyện Hiệp Hòa, Xã Đại Thành
+- Huyện Hiệp Hòa, Xã Đồng Tân
+- Huyện Hiệp Hòa, Xã Đức Thắng
+- Huyện Lạng Giang, Thị trấn Kép
+- Huyện Lạng Giang, Thị trấn Vôi
+- Huyện Lạng Giang, Xã An Hà
+- Huyện Lạng Giang, Xã Dương Đức
+- Huyện Lạng Giang, Xã Hương Lạc
+- Huyện Lạng Giang, Xã Hương Sơn
+- Huyện Lạng Giang, Xã Mỹ Hà
+- Huyện Lạng Giang, Xã Mỹ Thái
+- Huyện Lạng Giang, Xã Nghĩa Hòa
+- Huyện Lạng Giang, Xã Nghĩa Hưng
+- Huyện Lạng Giang, Xã Phi Mô
+- Huyện Lạng Giang, Xã Quang Thịnh
+- Huyện Lạng Giang, Xã Thái Đào
+- Huyện Lạng Giang, Xã Tiên Lục
+- Huyện Lạng Giang, Xã Tân Dĩnh
+- Huyện Lạng Giang, Xã Tân Hưng
+- Huyện Lạng Giang, Xã Tân Thanh
+- Huyện Lạng Giang, Xã Tân Thịnh
+- Huyện Lạng Giang, Xã Xuân Hương
+- Huyện Lạng Giang, Xã Xương Lâm
+- Huyện Lạng Giang, Xã Yên Mỹ
+- Huyện Lạng Giang, Xã Đào Mỹ
+- Huyện Lạng Giang, Xã Đại Lâm
+- Huyện Lục Nam, Thị trấn Lục Nam
+- Huyện Lục Nam, Thị trấn Đồi Ngô
+- Huyện Lục Nam, Xã Bình Sơn
+- Huyện Lục Nam, Xã Bảo Sơn
+- Huyện Lục Nam, Xã Bảo Đài
+- Huyện Lục Nam, Xã Bắc Lũng
+- Huyện Lục Nam, Xã Chu Điện
+- Huyện Lục Nam, Xã Cương Sơn
+- Huyện Lục Nam, Xã Cẩm Lý
+- Huyện Lục Nam, Xã Huyền Sơn
+- Huyện Lục Nam, Xã Khám Lạng
+- Huyện Lục Nam, Xã Lan Mẫu
+- Huyện Lục Nam, Xã Lục Sơn
+- Huyện Lục Nam, Xã Nghĩa Phương
+- Huyện Lục Nam, Xã Phương Sơn
+- Huyện Lục Nam, Xã Tam Dị
+- Huyện Lục Nam, Xã Thanh Lâm
+- Huyện Lục Nam, Xã Tiên Hưng
+- Huyện Lục Nam, Xã Tiên Nha
+- Huyện Lục Nam, Xã Trường Giang
+- Huyện Lục Nam, Xã Trường Sơn
+- Huyện Lục Nam, Xã Vô Tranh
+- Huyện Lục Nam, Xã Vũ Xá
+- Huyện Lục Nam, Xã Yên Sơn
+- Huyện Lục Nam, Xã Đan Hội
+- Huyện Lục Nam, Xã Đông Hưng
+- Huyện Lục Nam, Xã Đông Phú
+- Huyện Lục Ngạn, Thị trấn Chũ
+- Huyện Lục Ngạn, Xã Biên Sơn
+- Huyện Lục Ngạn, Xã Biển Động
+- Huyện Lục Ngạn, Xã Cấm Sơn
+- Huyện Lục Ngạn, Xã Giáp Sơn
+- Huyện Lục Ngạn, Xã Hồng Giang
+- Huyện Lục Ngạn, Xã Hộ Đáp
+- Huyện Lục Ngạn, Xã Kim Sơn
+- Huyện Lục Ngạn, Xã Kiên Lao
+- Huyện Lục Ngạn, Xã Kiên Thành
+- Huyện Lục Ngạn, Xã Mỹ An
+- Huyện Lục Ngạn, Xã Nam Dương
+- Huyện Lục Ngạn, Xã Nghĩa Hồ
+- Huyện Lục Ngạn, Xã Phong Minh
+- Huyện Lục Ngạn, Xã Phong Vân
+- Huyện Lục Ngạn, Xã Phì Điền
+- Huyện Lục Ngạn, Xã Phú Nhuận
+- Huyện Lục Ngạn, Xã Phượng Sơn
+- Huyện Lục Ngạn, Xã Quý Sơn
+- Huyện Lục Ngạn, Xã Sơn Hải
+- Huyện Lục Ngạn, Xã Thanh Hải
+- Huyện Lục Ngạn, Xã Trù Hựu
+- Huyện Lục Ngạn, Xã Tân Hoa
+- Huyện Lục Ngạn, Xã Tân Lập
+- Huyện Lục Ngạn, Xã Tân Mộc
+- Huyện Lục Ngạn, Xã Tân Quang
+- Huyện Lục Ngạn, Xã Tân Sơn
+- Huyện Lục Ngạn, Xã Xa Lý
+- Huyện Lục Ngạn, Xã Đèo Gia
+- Huyện Lục Ngạn, Xã Đồng Cốc
+- Huyện Sơn Động, Thị trấn An Châu
+- Huyện Sơn Động, Thị trấn Thanh Sơn
+- Huyện Sơn Động, Xã An Bá
+- Huyện Sơn Động, Xã An Châu
+- Huyện Sơn Động, Xã An Lạc
+- Huyện Sơn Động, Xã An Lập
+- Huyện Sơn Động, Xã Bồng Am
+- Huyện Sơn Động, Xã Chiên Sơn
+- Huyện Sơn Động, Xã Cẩm Đàn
+- Huyện Sơn Động, Xã Dương Hưu
+- Huyện Sơn Động, Xã Giáo Liêm
+- Huyện Sơn Động, Xã Hữu Sản
+- Huyện Sơn Động, Xã Long Sơn
+- Huyện Sơn Động, Xã Lệ Viễn
+- Huyện Sơn Động, Xã Phúc Thắng
+- Huyện Sơn Động, Xã Quế Sơn
+- Huyện Sơn Động, Xã Thanh Luận
+- Huyện Sơn Động, Xã Thạch Sơn
+- Huyện Sơn Động, Xã Tuấn Mậu
+- Huyện Sơn Động, Xã Tuấn Đạo
+- Huyện Sơn Động, Xã Vân Sơn
+- Huyện Sơn Động, Xã Vĩnh Khương
+- Huyện Sơn Động, Xã Yên Định
+- Huyện Tân Yên, Thị trấn Cao Thượng
+- Huyện Tân Yên, Thị trấn Nhã Nam
+- Huyện Tân Yên, Xã An Dương
+- Huyện Tân Yên, Xã Cao Thượng
+- Huyện Tân Yên, Xã Cao Xá
+- Huyện Tân Yên, Xã Hợp Đức
+- Huyện Tân Yên, Xã Lam Cốt
+- Huyện Tân Yên, Xã Lan Giới
+- Huyện Tân Yên, Xã Liên Chung
+- Huyện Tân Yên, Xã Liên Sơn
+- Huyện Tân Yên, Xã Ngọc Châu
+- Huyện Tân Yên, Xã Ngọc Lý
+- Huyện Tân Yên, Xã Ngọc Thiện
+- Huyện Tân Yên, Xã Ngọc Vân
+- Huyện Tân Yên, Xã Nhã Nam
+- Huyện Tân Yên, Xã Phúc Hòa
+- Huyện Tân Yên, Xã Phúc Sơn
+- Huyện Tân Yên, Xã Quang Tiến
+- Huyện Tân Yên, Xã Quế Nham
+- Huyện Tân Yên, Xã Song Vân
+- Huyện Tân Yên, Xã Tân Trung
+- Huyện Tân Yên, Xã Việt Lập
+- Huyện Tân Yên, Xã Việt Ngọc
+- Huyện Tân Yên, Xã Đại Hóa
+- Huyện Việt Yên, Thị trấn  Bích Động
+- Huyện Việt Yên, Thị trấn Nếnh
+- Huyện Việt Yên, Xã Bích Sơn
+- Huyện Việt Yên, Xã Hoàng Ninh
+- Huyện Việt Yên, Xã Hương Mai
+- Huyện Việt Yên, Xã Hồng Thái
+- Huyện Việt Yên, Xã Minh Đức
+- Huyện Việt Yên, Xã Nghĩa Trung
+- Huyện Việt Yên, Xã Ninh Sơn
+- Huyện Việt Yên, Xã Quang Châu
+- Huyện Việt Yên, Xã Quảng Minh
+- Huyện Việt Yên, Xã Thượng Lan
+- Huyện Việt Yên, Xã Tiên Sơn
+- Huyện Việt Yên, Xã Trung Sơn
+- Huyện Việt Yên, Xã Tăng Tiến
+- Huyện Việt Yên, Xã Tự Lạn
+- Huyện Việt Yên, Xã Việt Tiến
+- Huyện Việt Yên, Xã Vân Hà
+- Huyện Việt Yên, Xã Vân Trung
+- Huyện Yên Dũng, Thị trấn Neo
+- Huyện Yên Dũng, Thị trấn Tân Dân
+- Huyện Yên Dũng, Xã Cảnh Thụy
+- Huyện Yên Dũng, Xã Hương Gián
+- Huyện Yên Dũng, Xã Lãng Sơn
+- Huyện Yên Dũng, Xã Lão Hộ
+- Huyện Yên Dũng, Xã Nham Sơn
+- Huyện Yên Dũng, Xã Nội Hoàng
+- Huyện Yên Dũng, Xã Quỳnh Sơn
+- Huyện Yên Dũng, Xã Thắng Cương
+- Huyện Yên Dũng, Xã Tiến Dũng
+- Huyện Yên Dũng, Xã Tiền Phong
+- Huyện Yên Dũng, Xã Trí Yên
+- Huyện Yên Dũng, Xã Tân An
+- Huyện Yên Dũng, Xã Tân Liễu
+- Huyện Yên Dũng, Xã Tư Mại
+- Huyện Yên Dũng, Xã Xuân Phú
+- Huyện Yên Dũng, Xã Yên Lư
+- Huyện Yên Dũng, Xã Đồng Phúc
+- Huyện Yên Dũng, Xã Đồng Việt
+- Huyện Yên Dũng, Xã Đức Giang
+- Huyện Yên Thế, Thị trấn Bố Hạ
+- Huyện Yên Thế, Thị trấn Cầu Gồ
+- Huyện Yên Thế, Xã An Thượng
+- Huyện Yên Thế, Xã Bố Hạ
+- Huyện Yên Thế, Xã Canh Nậu
+- Huyện Yên Thế, Xã Hương Vĩ
+- Huyện Yên Thế, Xã Hồng Kỳ
+- Huyện Yên Thế, Xã Phồn Xương
+- Huyện Yên Thế, Xã Tam Hiệp
+- Huyện Yên Thế, Xã Tam Tiến
+- Huyện Yên Thế, Xã Tiến Thắng
+- Huyện Yên Thế, Xã Tân Hiệp
+- Huyện Yên Thế, Xã Tân Sỏi
+- Huyện Yên Thế, Xã Xuân Lương
+- Huyện Yên Thế, Xã Đông Sơn
+- Huyện Yên Thế, Xã Đồng Hưu
+- Huyện Yên Thế, Xã Đồng Kỳ
+- Huyện Yên Thế, Xã Đồng Lạc
+- Huyện Yên Thế, Xã Đồng Tiến
+- Huyện Yên Thế, Xã Đồng Tâm
+- Huyện Yên Thế, Xã Đồng Vương
+- Thành phố Bắc Giang, Phường Dĩnh Kế
+- Thành phố Bắc Giang, Phường Hoàng Văn Thụ
+- Thành phố Bắc Giang, Phường Lê Lợi
+- Thành phố Bắc Giang, Phường Mỹ Độ
+- Thành phố Bắc Giang, Phường Ngô Quyền
+- Thành phố Bắc Giang, Phường Thọ Xương
+- Thành phố Bắc Giang, Phường Trần Nguyên Hãn
+- Thành phố Bắc Giang, Phường Trần Phú
+- Thành phố Bắc Giang, Phường Xương Giang
+- Thành phố Bắc Giang, Phường Đa Mai
+- Thành phố Bắc Giang, Xã Dĩnh Trì
+- Thành phố Bắc Giang, Xã Song Khê
+- Thành phố Bắc Giang, Xã Song Mai
+- Thành phố Bắc Giang, Xã Tân Mỹ
+- Thành phố Bắc Giang, Xã Tân Tiến
+- Thành phố Bắc Giang, Xã Đồng Sơn
+Yêu cầu trả về tên xã hoặc phường hoặc thị trấn và tên quận hoặc huyện hoặc thị xã là xã, phường, thị trấn theo quận, huyện, thị xã ở Bắc Giang được cung cấp ở trên.
+Nếu không có thông tin xã hoặc phường hoặc thị trấn và tên quận hoặc huyện hoặc thị xã thì trả về "Không xác định".
+Bắt buộc phải trả về tên xã, phường, thị trấn và quận, huyện, thị xã ở Bắc Giang.
+Lưu ý: Trả về json và không giải thích gì thêm.
+
+```json
+{
+    "district": <str tên quận hoặc huyện hoặc thị xã chính xác là xã hoặc phường hoặc thị trấn và quận hoặc huyện hoặc thị xã tham khảo từ danh sách. Nếu không có thông tin xã hoặc phường hoặc thị trấn và quận hoặc huyện hoặc thị xã thì trả về "Không xác định">,
+    "town": <str tên xã hoặc phường hoặc thị trấn tương ứng với quận, huyện, thị xã chính xác là xã hoặc phường hoặc thị trấn và quận hoặc huyện hoặc thị xã tham khảo từ danh sách. Nếu không có thông tin xã hoặc phường hoặc thị trấn và quận hoặc huyện hoặc thị xã thì trả về "Không xác định">
+}
+```
+# Input
+- Địa chỉ: Tại KCN Quang Châu, Bắc Giang
+
+# Output:
+```json
+{
+    "district": "Huyện Việt Yên",
+    "town": "Xã Quang Châu"
+}
+```
+###########
+# Ví dụ 3
+###########
+- Danh sách 184 xã, phường, thị trấn theo quận, huyện, thị xã ở Đắk Lắk: 
+Huyện Buôn Đôn, Xã Cuôr KNia
+- Huyện Buôn Đôn, Xã Ea Bar
+- Huyện Buôn Đôn, Xã Ea Huar
+- Huyện Buôn Đôn, Xã Ea Nuôl
+- Huyện Buôn Đôn, Xã Ea Wer
+- Huyện Buôn Đôn, Xã Krông Na
+- Huyện Buôn Đôn, Xã Tân Hoà
+- Huyện Cư Kuin, Xã Cư Ê Wi
+- Huyện Cư Kuin, Xã Dray Bhăng
+- Huyện Cư Kuin, Xã Ea BHốk
+- Huyện Cư Kuin, Xã Ea Hu
+- Huyện Cư Kuin, Xã Ea Ktur
+- Huyện Cư Kuin, Xã Ea Ning
+- Huyện Cư Kuin, Xã Ea Tiêu
+- Huyện Cư Kuin, Xã Hòa Hiệp
+- Huyện Cư M'gar, Thị trấn Ea Pốk
+- Huyện Cư M'gar, Thị trấn Quảng Phú
+- Huyện Cư M'gar, Xã Cuor Đăng
+- Huyện Cư M'gar, Xã Cư Dliê M'nông
+- Huyện Cư M'gar, Xã Cư M'gar
+- Huyện Cư M'gar, Xã Cư Suê
+- Huyện Cư M'gar, Xã Ea D'Rơng
+- Huyện Cư M'gar, Xã Ea H'đinh
+- Huyện Cư M'gar, Xã Ea KPam
+- Huyện Cư M'gar, Xã Ea Kiết
+- Huyện Cư M'gar, Xã Ea Kuêh
+- Huyện Cư M'gar, Xã Ea M'DRóh
+- Huyện Cư M'gar, Xã Ea M'nang
+- Huyện Cư M'gar, Xã Ea Tar
+- Huyện Cư M'gar, Xã Ea Tul
+- Huyện Cư M'gar, Xã Quảng Hiệp
+- Huyện Cư M'gar, Xã Quảng Tiến
+- Huyện Ea H'leo, Thị trấn Ea Drăng
+- Huyện Ea H'leo, Xã Cư A Mung
+- Huyện Ea H'leo, Xã Cư Mốt
+- Huyện Ea H'leo, Xã Dlê Yang
+- Huyện Ea H'leo, Xã Ea H'leo
+- Huyện Ea H'leo, Xã Ea Hiao
+- Huyện Ea H'leo, Xã Ea Khal
+- Huyện Ea H'leo, Xã Ea Nam
+- Huyện Ea H'leo, Xã Ea Ral
+- Huyện Ea H'leo, Xã Ea Sol
+- Huyện Ea H'leo, Xã Ea Tir
+- Huyện Ea H'leo, Xã Ea Wy
+- Huyện Ea Kar, Thị trấn Ea Kar
+- Huyện Ea Kar, Thị trấn Ea Knốp
+- Huyện Ea Kar, Xã Cư Bông
+- Huyện Ea Kar, Xã Cư ELang
+- Huyện Ea Kar, Xã Cư Huê
+- Huyện Ea Kar, Xã Cư Jang
+- Huyện Ea Kar, Xã Cư Ni
+- Huyện Ea Kar, Xã Cư Prông
+- Huyện Ea Kar, Xã Ea Kmút
+- Huyện Ea Kar, Xã Ea Păl
+- Huyện Ea Kar, Xã Ea Sar
+- Huyện Ea Kar, Xã Ea Sô
+- Huyện Ea Kar, Xã Ea Tih
+- Huyện Ea Kar, Xã Ea Ô
+- Huyện Ea Kar, Xã Ea Đar
+- Huyện Ea Kar, Xã Xuân Phú
+- Huyện Ea Súp, Thị trấn Ea Súp
+- Huyện Ea Súp, Xã Cư KBang
+- Huyện Ea Súp, Xã Cư M'Lan
+- Huyện Ea Súp, Xã Ea Bung
+- Huyện Ea Súp, Xã Ea Lê
+- Huyện Ea Súp, Xã Ea Rốk
+- Huyện Ea Súp, Xã Ia JLơi
+- Huyện Ea Súp, Xã Ia Lốp
+- Huyện Ea Súp, Xã Ia RVê
+- Huyện Ea Súp, Xã Ya Tờ Mốt
+- Huyện Krông A Na, Thị trấn Buôn Trấp
+- Huyện Krông A Na, Xã Bình Hòa
+- Huyện Krông A Na, Xã Băng A Drênh
+- Huyện Krông A Na, Xã Dray Sáp
+- Huyện Krông A Na, Xã Dur KMăl
+- Huyện Krông A Na, Xã Ea Bông
+- Huyện Krông A Na, Xã Ea Na
+- Huyện Krông A Na, Xã Quảng Điền
+- Huyện Krông Bông, Thị trấn Krông Kmar
+- Huyện Krông Bông, Xã Cư Drăm
+- Huyện Krông Bông, Xã Cư KTy
+- Huyện Krông Bông, Xã Cư Pui
+- Huyện Krông Bông, Xã Dang Kang
+- Huyện Krông Bông, Xã Ea Trul
+- Huyện Krông Bông, Xã Hòa Lễ
+- Huyện Krông Bông, Xã Hòa Phong
+- Huyện Krông Bông, Xã Hòa Sơn
+- Huyện Krông Bông, Xã Hòa Thành
+- Huyện Krông Bông, Xã Hòa Tân
+- Huyện Krông Bông, Xã Khuê Ngọc Điền
+- Huyện Krông Bông, Xã Yang Mao
+- Huyện Krông Bông, Xã Yang Reh
+- Huyện Krông Búk, Xã Chư KBô
+- Huyện Krông Búk, Xã Cư Né
+- Huyện Krông Búk, Xã Cư Pơng
+- Huyện Krông Búk, Xã Ea Ngai
+- Huyện Krông Búk, Xã Ea Sin
+- Huyện Krông Búk, Xã Pơng Drang
+- Huyện Krông Búk, Xã Tân Lập
+- Huyện Krông Năng, Thị trấn Krông Năng
+- Huyện Krông Năng, Xã Cư Klông
+- Huyện Krông Năng, Xã Ea Dăh
+- Huyện Krông Năng, Xã Ea Hồ
+- Huyện Krông Năng, Xã Ea Puk
+- Huyện Krông Năng, Xã Ea Tam
+- Huyện Krông Năng, Xã Ea Tân
+- Huyện Krông Năng, Xã Ea Tóh
+- Huyện Krông Năng, Xã Phú Lộc
+- Huyện Krông Năng, Xã Phú Xuân
+- Huyện Krông Năng, Xã Tam Giang
+- Huyện Krông Năng, Xã ĐLiê Ya
+- Huyện Krông Pắc, Thị trấn Phước An
+- Huyện Krông Pắc, Xã Ea Hiu
+- Huyện Krông Pắc, Xã Ea KNuec
+- Huyện Krông Pắc, Xã Ea Kly
+- Huyện Krông Pắc, Xã Ea Kuăng
+- Huyện Krông Pắc, Xã Ea Kênh
+- Huyện Krông Pắc, Xã Ea Phê
+- Huyện Krông Pắc, Xã Ea Uy
+- Huyện Krông Pắc, Xã Ea Yiêng
+- Huyện Krông Pắc, Xã Ea Yông
+- Huyện Krông Pắc, Xã Hòa An
+- Huyện Krông Pắc, Xã Hòa Tiến
+- Huyện Krông Pắc, Xã Hòa Đông
+- Huyện Krông Pắc, Xã KRông Búk
+- Huyện Krông Pắc, Xã Tân Tiến
+- Huyện Krông Pắc, Xã Vụ Bổn
+- Huyện Lắk, Thị trấn Liên Sơn
+- Huyện Lắk, Xã Buôn Triết
+- Huyện Lắk, Xã Buôn Tría
+- Huyện Lắk, Xã Bông Krang
+- Huyện Lắk, Xã Ea R'Bin
+- Huyện Lắk, Xã Krông Nô
+- Huyện Lắk, Xã Nam Ka
+- Huyện Lắk, Xã Yang Tao
+- Huyện Lắk, Xã Đắk Liêng
+- Huyện Lắk, Xã Đắk Nuê
+- Huyện Lắk, Xã Đắk Phơi
+- Huyện M'Đrắk, Thị trấn M'Đrắk
+- Huyện M'Đrắk, Xã Cư K Róa
+- Huyện M'Đrắk, Xã Cư M'ta
+- Huyện M'Đrắk, Xã Cư Prao
+- Huyện M'Đrắk, Xã Cư San
+- Huyện M'Đrắk, Xã Ea H'MLay
+- Huyện M'Đrắk, Xã Ea Lai
+- Huyện M'Đrắk, Xã Ea M' Doal
+- Huyện M'Đrắk, Xã Ea Pil
+- Huyện M'Đrắk, Xã Ea Riêng
+- Huyện M'Đrắk, Xã Ea Trang
+- Huyện M'Đrắk, Xã Krông Jing
+- Huyện M'Đrắk, Xã Krông Á
+- Thành phố Buôn Ma Thuột, Phường Ea Tam
+- Thành phố Buôn Ma Thuột, Phường Khánh Xuân
+- Thành phố Buôn Ma Thuột, Phường Thành Công
+- Thành phố Buôn Ma Thuột, Phường Thành Nhất
+- Thành phố Buôn Ma Thuột, Phường Thắng Lợi
+- Thành phố Buôn Ma Thuột, Phường Thống Nhất
+- Thành phố Buôn Ma Thuột, Phường Tân An
+- Thành phố Buôn Ma Thuột, Phường Tân Hòa
+- Thành phố Buôn Ma Thuột, Phường Tân Lập
+- Thành phố Buôn Ma Thuột, Phường Tân Lợi
+- Thành phố Buôn Ma Thuột, Phường Tân Thành
+- Thành phố Buôn Ma Thuột, Phường Tân Tiến
+- Thành phố Buôn Ma Thuột, Phường Tự An
+- Thành phố Buôn Ma Thuột, Xã Cư ÊBur
+- Thành phố Buôn Ma Thuột, Xã Ea Kao
+- Thành phố Buôn Ma Thuột, Xã Ea Tu
+- Thành phố Buôn Ma Thuột, Xã Hòa Khánh
+- Thành phố Buôn Ma Thuột, Xã Hòa Phú
+- Thành phố Buôn Ma Thuột, Xã Hòa Thuận
+- Thành phố Buôn Ma Thuột, Xã Hòa Thắng
+- Thành phố Buôn Ma Thuột, Xã Hòa Xuân
+- Thị xã Buôn Hồ, Phường An Bình
+- Thị xã Buôn Hồ, Phường An Lạc
+- Thị xã Buôn Hồ, Phường Bình Tân
+- Thị xã Buôn Hồ, Phường Thiện An
+- Thị xã Buôn Hồ, Phường Thống Nhất
+- Thị xã Buôn Hồ, Phường Đoàn Kết
+- Thị xã Buôn Hồ, Phường Đạt Hiếu
+- Thị xã Buôn Hồ, Xã Bình Thuận
+- Thị xã Buôn Hồ, Xã Cư Bao
+- Thị xã Buôn Hồ, Xã Ea Blang
+- Thị xã Buôn Hồ, Xã Ea Drông
+- Thị xã Buôn Hồ, Xã Ea Siên
+Yêu cầu trả về tên xã hoặc phường hoặc thị trấn và tên quận hoặc huyện hoặc thị xã là xã, phường, thị trấn theo quận, huyện, thị xã ở Đắk Lắk được cung cấp ở trên.
+Nếu không có thông tin xã hoặc phường hoặc thị trấn và tên quận hoặc huyện hoặc thị xã thì trả về "Không xác định".
+Bắt buộc phải trả về tên xã, phường, thị trấn và quận, huyện, thị xã ở Đắk Lắk.
+Lưu ý: Trả về json và không giải thích gì thêm.
+
+```json
+{
+    "district": <str tên quận hoặc huyện hoặc thị xã chính xác là xã hoặc phường hoặc thị trấn và quận hoặc huyện hoặc thị xã tham khảo từ danh sách. Nếu không có thông tin xã hoặc phường hoặc thị trấn và quận hoặc huyện hoặc thị xã thì trả về "Không xác định">,
+    "town": <str tên xã hoặc phường hoặc thị trấn tương ứng với quận, huyện, thị xã chính xác là xã hoặc phường hoặc thị trấn và quận hoặc huyện hoặc thị xã tham khảo từ danh sách. Nếu không có thông tin xã hoặc phường hoặc thị trấn và quận hoặc huyện hoặc thị xã thì trả về "Không xác định">
+}
+```
+# Input
+- Địa chỉ: Buôn Tuôr A, tỉnh Đăk Lăk.
+
+# Output:
+```json
+{
+    'district': 'Không xác định', 
+    'town': 'Không xác định'
+}
+```
+###########
+# Dữ liệu thật
+###########
+
+- Danh sách {num_district_town} xã, phường, thị trấn theo quận, huyện, thị xã ở {province}: 
+{district_town_str}
+Yêu cầu trả về tên xã hoặc phường hoặc thị trấn và tên quận hoặc huyện hoặc thị xã là xã, phường, thị trấn theo quận, huyện, thị xã ở {province} được cung cấp ở trên.
+Nếu không có thông tin xã hoặc phường hoặc thị trấn và tên quận hoặc huyện hoặc thị xã thì trả về "Không xác định".
+Bắt buộc phải trả về tên xã, phường, thị trấn và quận, huyện, thị xã ở {province}.
+Lưu ý: Trả về json và không giải thích gì thêm.
+
+```json
+{
+    "district": <str tên quận hoặc huyện hoặc thị xã chính xác là xã hoặc phường hoặc thị trấn và quận hoặc huyện hoặc thị xã tham khảo từ danh sách. Nếu không có thông tin xã hoặc phường hoặc thị trấn và quận hoặc huyện hoặc thị xã thì trả về "Không xác định">,
+    "town": <str tên xã hoặc phường hoặc thị trấn tương ứng với quận, huyện, thị xã chính xác là xã hoặc phường hoặc thị trấn và quận hoặc huyện hoặc thị xã tham khảo từ danh sách. Nếu không có thông tin xã hoặc phường hoặc thị trấn và quận hoặc huyện hoặc thị xã thì trả về "Không xác định">
+}
+```
+# Input
+- Địa chỉ: {address}
+
+# Output:

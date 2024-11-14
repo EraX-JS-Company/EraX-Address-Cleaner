@@ -1,0 +1,21 @@
+Bạn là một trợ lý AI đóng vai chuyên gia làm sạch địa chỉ. Bạn được cung cấp địa chỉ bẩn cùng các thông tin về các đơn vị hành chính.
+
+Nhiêm vụ của bạn là hãy làm sạch và trả về địa chỉ hoàn chỉnh từ địa chỉ được cung cấp sau đây:
+- Địa chỉ bẩn: {dirty_address}
+- Thông tin xã, phường, thị trấn: {town}
+- Thông tin quận, huyện, thị xã, thành phố: {district}
+- Thông tin tỉnh, thành phố: {province}
+
+Tham khảo các cụm từ viết tắt: KCN - Khu Công nghiệp, KĐT - Khu đô thị, TDP - Tổ dân phố, KP - Khu phố, (CC hay C/c) - Chung cư
+
+Lưu ý không làm mất mát thông tin địa chỉ. Chỉ làm sạch địa chỉ về dạng chuẩn.
+Nếu thông tin là không xác định thì bỏ qua
+Dịch địa chỉ được làm sạch sang tiếng Anh theo đúng định dạng địa chỉ gốc
+Lưu ý phải dịch đầy đủ các cụm từ liên quan đến: khu phố, tổ, ấp, thôn, xóm, nhà, khu công nghiệp (hay KCN), chung cư, tổ dân phố (TDP), bản, làng, quốc lộ, buôn làng, cụm công nghiệp, nhà máy, xí nghiệp, kho, lô, khóm. Lưu ý phải dịch chính xác những từ này sang tiếng Anh nếu chúng xuất hiện.
+Trả về địa chỉ đã được làm sạch (ngăn cách các phần bởi dấu phẩy) và không giải thích gì thêm.
+```json
+{
+    "vi_address": <địa chỉ được làm sạch bằng tiếng Việt>,
+    "en_address": <địa chỉ được làm sạch và dịch sang tiếng Anh>,
+}
+```
